@@ -23,6 +23,12 @@ private $pdo;
    $this->pdo = new PDO("mysql:host=".self::$host, self::$user, self::$pass, self::$opt);
    $this->pdo->exec('CREATE DATABASE IF NOT EXISTS '.self::$db);
    $this->pdo->exec('use '.self::$db);
+   $this->pdo->exec('CREATE TABLE IF NOT EXISTS chatmessages(
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR (20) NOT NULL,
+  message TEXT,
+  PRIMARY KEY (id)
+)');
 }
 
 //создание объекта
