@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-require_once('D:\programmirovanie\OpenServer\domains\ChatProject\classes\Story.php');
+require_once('D:\programmirovanie\OpenServer\domains\chat_for_chatting\ChatProject\classes\Story.php');
 $story = Story::alive();
 ?>
 <html lang="ru">

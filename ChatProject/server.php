@@ -19,7 +19,7 @@ while(true){
     $clientSocketArray[] = $newSocket;
     $newSocketArray[] = $newSocket;
     $header = socket_read($newSocket, 1024);
-    $chat->sendHeaders($header, $newSocket, 'localhost/ChatProject', PORT);
+    $chat->sendHeaders($header, $newSocket, 'localhost/chat_for_chatting/ChatProject', PORT);
     socket_getpeername($newSocket, $client_ip_adress);
     $connectionACK= $chat->NewConnectinACK($client_ip_adress);
     $chat->send($connectionACK, $clientSocketArray);

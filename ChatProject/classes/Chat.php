@@ -19,7 +19,7 @@ class Chat {
         "Upgrade: websocket\r\n" .
         "Connection: Upgrade\r\n" .
         "WebSocket-Origin: $host" .
-        "WebSocket-Location: ws://$host:$port/ChatProject/server.php\r\n" .
+        "WebSocket-Location: ws://$host:$port/chat_for_chatting/ChatProject/server.php\r\n" .
         "Sec-WebSocket-Accept:$sKey\r\n\r\n";
 
         socket_write($newSocket, $strHeadr, strlen($strHeadr));
