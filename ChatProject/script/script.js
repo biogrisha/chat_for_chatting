@@ -20,7 +20,7 @@ function comeback(){
   $('#chat-message').height(height);
 }
 jQuery(document).ready(function ($) {
-    var socket = new WebSocket("ws://localhost:8080/Socket/server.php");
+    var socket = new WebSocket("ws://localhost:8080/ChatProject/server.php");
     socket.onopen = function () {
         message("<div>Соединение установлено</div>");
     };
