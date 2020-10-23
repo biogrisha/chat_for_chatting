@@ -38,8 +38,12 @@ jQuery(document).ready(function ($) {
       var message = {
         chat_message:$("#chat-message").val(),
         chat_user:$("#chat-user").val(),
+        chat_message_len:$("#chat-message").val().length,
+        chat_user_len:$("#chat-user").val().length,
       };
-      if(message.chat_user !== "" && message.chat_message !== ""){
+    if(message.chat_user_len > 20){
+      $('#field_empty').text('Имя длинновато');
+    }else if(message.chat_user_len !== 0 && message.chat_message_len !== 0){
       $("#chat-user").attr("type","hidden");
       socket.send(JSON.stringify(message));
       comeback();
