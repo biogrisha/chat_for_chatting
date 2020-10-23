@@ -20,8 +20,9 @@ private $pdo;
 
 //конструктор
  private function __construct(){
-   $dsn = 'mysql:host='.self::$host.';dbname='.self::$db.';charset='.self::$charset;
-   $this->$pdo = new PDO($dsn, self::$user, self::$pass, self::$opt);
+   $this->pdo = new PDO("mysql:host=".self::$host, self::$user, self::$pass, self::$opt);
+   $this->pdo->exec('CREATE DATABASE IF NOT EXISTS '.self::$db);
+   $this->pdo->exec('use '.self::$db);
 }
 
 //создание объекта
@@ -53,7 +54,7 @@ public function dateBaseRec(){
 $array = $this->separation();
 static $query;
 if($query == ""){
-$query = $this->$pdo->prepare("INSERT INTO chatmessages (name, message) VALUES (?, ?)");
+$query = $this->pdo->prepare("INSERT INTO chatmessages (name, message) VALUES (?, ?)");
 }
 foreach($array as list(,$message,$name)){
 echo $message;
@@ -67,7 +68,7 @@ public function disconnected(){
   $array = $this->separation();
   static $query;
   if($query == ""){
-  $query = $this->$pdo->prepare("INSERT INTO chatmessages (name, message) VALUES (?, ?)");
+  $query = $this->pdo->prepare("INSERT INTO chatmessages (name, message) VALUES (?, ?)");
   }
   var_dump($array);
   foreach($array as list(,$message,$name)){
@@ -83,7 +84,7 @@ private function addDivs($message,$class = null){
 }
 public function previousMessages(){
   $messageArray = [];
-  $stm = $this->$pdo->prepare("SELECT name, message FROM chatmessages");
+  $stm = $this->pdo->prepare("SELECT name, message FROM chatmessages");
   $stm->execute();
   while($result = $stm->fetch(PDO::FETCH_ASSOC)){
     echo $this->addDivs($result['name'],"user").'сказал'.$this->addDivs($result['message'],"message");
