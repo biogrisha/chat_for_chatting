@@ -46,7 +46,6 @@ if($messageObj !== null){
     $chat->send($connectionACK,$clientSocketArray);
     $newSocketArrayIndex = array_search($newSocketArrayResource, $clientSocketArray);
     unset($clientSocketArray[$newSocketArrayIndex]);
-    $story->disconnected();
   }
 }
 
